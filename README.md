@@ -556,8 +556,20 @@ def load_pretrained_weights(model, weight_path):
 
 
 
+Connect to MongoDB shell
+
+mongosh
 
 
+show dbs
+
+
+use robotDB
+
+
+show collections
+
+db.profiles.find().pretty()
 
 
 
@@ -659,4 +671,5 @@ def load_pretrained_weights(model, weight_path):
 #   P e r s o n F o l l o w i n g R o b o t 
  
  
+
 
