@@ -68,7 +68,7 @@ Requires-Dist: torch>=1.13.0
 Requires-Dist: torchvision>=0.17.0
 
 🛠 Modification in : reid_multibackend.py
-Pour assurer la compatibilité avec notre environnement CUDA et PyTorch, il faut mettre à jour le fichier :
+To ensure compatibility with our CUDA and PyTorch environment, the file needs to be updated:
 
 access:
 .venv-py39/Lib/site-packages/ultralytics/trackers/reid_multibackend.py
@@ -659,3 +659,4 @@ def load_pretrained_weights(model, weight_path):
 #   P e r s o n F o l l o w i n g R o b o t 
  
  
+
