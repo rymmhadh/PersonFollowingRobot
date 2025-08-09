@@ -556,6 +556,97 @@ def load_pretrained_weights(model, weight_path):
 
 
 
+
+
+How to Install MongoDB on Windows
+
+    Download the installer:
+    Go to the official MongoDB Community Server download page:
+    https://www.mongodb.com/try/download/community
+
+    Choose Windows as your OS and download the MSI installer.
+
+    Run the installer:
+
+        Double-click the downloaded .msi file.
+
+        Follow the setup wizard steps.
+
+        Select the Complete installation option.
+
+        Check Install MongoDB as a Service to have MongoDB start automatically with Windows (recommended).
+
+    MongoDB default installation path:
+    MongoDB is usually installed under:
+    C:\Program Files\MongoDB\Server\6.0\
+    The mongosh executable is located in the bin folder inside that directory, e.g.:
+    C:\Program Files\MongoDB\Server\6.0\bin
+
+    Add MongoDB to your system PATH (optional but convenient):
+
+        Open Control Panel → System → Advanced system settings → Environment Variables.
+
+        Edit the Path variable and add the path to the MongoDB bin folder, for example:
+        C:\Program Files\MongoDB\Server\6.0\bin
+
+
+
+
+
+    Start using MongoDB:
+
+        If installed as a service, MongoDB runs automatically.
+
+        Open Command Prompt (cmd) and type:
+
+mongosh
+
+
+
+
+How to Install MongoDB on Ubuntu
+
+    Import the MongoDB public GPG key:
+
+wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+
+    Create a MongoDB source list file:
+    Replace focal with your Ubuntu codename if needed (jammy for 22.04, etc.).
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+
+    Update package lists:
+
+sudo apt-get update
+
+    Install MongoDB packages:
+
+sudo apt-get install -y mongodb-org
+
+    Start MongoDB service:
+
+sudo systemctl start mongod
+
+    Enable MongoDB to start on boot:
+
+sudo systemctl enable mongod
+
+    Check MongoDB service status:
+
+sudo systemctl status mongod
+
+    Access the MongoDB shell:
+
+mongosh
+
+Let me know if you want the commands adapted to your Ubuntu version or help configuring MongoDB!
+
+
+
+
+
+to open the MongoDB shell.
+
 Connect to MongoDB shell
 
 mongosh
@@ -671,5 +762,6 @@ db.profiles.find().pretty()
 #   P e r s o n F o l l o w i n g R o b o t 
  
  
+
 
 
