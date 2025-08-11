@@ -50,6 +50,7 @@ source .venv-py39/bin/activate
 3. Install PyTorch with CUDA 12.1
 
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install yolov5
 pip install cython
 pip install opencv-python==4.6.0.66
 pip install facenet-pytorch==2.6.0
@@ -762,6 +763,7 @@ db.profiles.find().pretty()
 #   P e r s o n F o l l o w i n g R o b o t 
  
  
+
 
 
 
