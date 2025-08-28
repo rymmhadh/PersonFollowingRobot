@@ -663,23 +663,60 @@ show collections
 
 db.profiles.find().pretty()
 
+//////////////////////////////////////////////////////////////////////////////
+
+Installing ROS 2 Humble + Gazebo Harmonic
+1️⃣ Install ROS 2 Humble on Ubuntu 22.04
+ROS 2 Humble Ubuntu Installation Guide
+https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
+
+
+🛠️ Installing Gazebo Harmonic on Ubuntu 22.04 (Jammy)
+
+https://gazebosim.org/docs/harmonic/install_ubuntu/
+
+📂 Creating a ROS 2 Workspace for PersonFollowingRobot
+
+1️⃣ Create the Workspace Directory
+
+# Navigate to your home directory or desired location
+cd ~/turtlebot34_ws
+
+# Create a new workspace folder
+mkdir -p src
+cd src
 
 
 
+2️⃣ Clone or Copy Your Packages
 
 
+# Copy person_following_pkg
+cp -r ~/path_to/PersonFollowingRobot/person_following_pkg ./
+
+# Copy my_robot_launch
+cp -r ~/path_to/PersonFollowingRobot/my_robot_launch ./
 
 
+3️⃣ Build the Workspace
+
+cd ~/turtlebot34_ws
+colcon build
 
 
+4️⃣ Source the Workspace
+
+source ~/turtlebot34_ws/install/setup.bash
+
+echo "source ~/turtlebot34_ws/install/setup.bash" >> ~/.bashrc
+source ~/.bashrc
 
 
+🖥️ Setting Up the Remote PC for PersonFollowingRobot
+1️⃣ Download and Install Ubuntu
 
-
-
-
-
-
+Download the Ubuntu 22.04 LTS Desktop (64-bit) image for your PC.
+Ubuntu 22.04 LTS Desktop
 
 
 
@@ -763,6 +800,7 @@ db.profiles.find().pretty()
 #   P e r s o n F o l l o w i n g R o b o t 
  
  
+
 
 
 
