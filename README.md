@@ -721,7 +721,7 @@ source ~/.bashrc
 
 5️⃣ Configure the Environment
 
-Set up the ROS 2 and Gazebo environment variables for your Remote PC:
+5.1 Set up the ROS 2 and Gazebo environment variables for your Remote PC:
 
 echo 'export ROS_DOMAIN_ID=30 # TURTLEBOT3' >> ~/.bashrc
 echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
@@ -730,13 +730,13 @@ source ~/.bashrc
 
 
 
-2. Clone the PersonFollowingRobot Repository
+5.2. Clone the PersonFollowingRobot Repository
 
    
 cd ~/turtlebot3_ws/src
 git clone https://github.com/rymmhadh/PersonFollowingRobot.git
 
-3. Copy Required Packages
+5.3. Copy Required Packages
 
 
   Move the required packages into the src folder of your workspace:
@@ -749,20 +749,20 @@ cp -r person_following_pkg ~/turtlebot3_ws/src/
 cp -r my_robot_launch ~/turtlebot3_ws/src/
 
 
-4. Build the Workspace
+5.4. Build the Workspace
 
    
 cd ~/turtlebot3_ws/
 colcon build --symlink-install
 source install/setup.bash
 
-5. Verify Installation
+5.5. Verify Installation
    
 ros2 pkg list | grep person_following_pkg
 ros2 pkg list | grep my_robot_launch
 
 
-4. Copy the Python Virtual Environment
+5.6. Copy the Python Virtual Environment
 
 To ensure that all Python dependencies are available, copy the .venv-py39 virtual environment into the person_following_pkg directory:
 
@@ -774,7 +774,7 @@ Activate the environment when needed:
 cd ~/turtlebot3_ws/src/person_following_pkg/.venv-py39
 source bin/activate
 
-5. Build the Workspace
+5.7. Build the Workspace
 
 cd ~/turtlebot3_ws/
 colcon build --symlink-install
@@ -784,8 +784,19 @@ source install/setup.bash
 
 
 
+Gazebo LAUNCH:
 
 
+export TURTLEBOT3_MODEL=burger
+export GAZEBO_MODEL_PATH=$HOME/turtlebot3_ws/src/my_robot_launch/models:/usr/share/gazebo-11/models:$HOME/turtlebot33_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models
+
+gzserver ~/turtlebot3_ws/src/my_robot_launch/worlds/walk.world &
+gzclient
+
+
+  In other Terminal:
+  
+  ros2 run person_following_pkg person_following_node
 
 
 
@@ -852,6 +863,7 @@ source install/setup.bash
 #   P e r s o n F o l l o w i n g R o b o t 
  
  
+
 
 
 
