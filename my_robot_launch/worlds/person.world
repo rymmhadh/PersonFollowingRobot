@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="person_world">
+
+    <!-- Plugins ROS2 -->
+    <plugin name="gazebo_ros" filename="libgazebo_ros_init.so"/>
+    <plugin name="gazebo_ros_factory" filename="libgazebo_ros_factory.so"/>
+
+    <!-- Soleil et sol -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Acteur / Personne -->
+    <actor name="person1">
+      <pose>0 0 0 0 0 0</pose>
+      <skin>
+        <filename>model://actor/meshes/actor.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>model://actor/meshes/actor.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="person1_plugin" filename="libActorPlugin.so">
+        <target>2 0 0</target>
+        <target_weight>1.0</target_weight>
+        <obstacle_weight>1.5</obstacle_weight>
+        <animation_factor>5.0</animation_factor>
+      </plugin>
+    </actor>
+
+  </world>
+</sdf>

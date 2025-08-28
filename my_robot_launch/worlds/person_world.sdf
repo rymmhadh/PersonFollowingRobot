@@ -1,0 +1,45 @@
+<sdf version="1.6">
+  <world name="default">
+    <include>
+      <uri>model://sun</uri>
+    </include>
+   <include>
+     <uri>model://turtlebot3_burger_cam</uri>
+     <pose>1 0 0 0 0 0</pose> <!-- change la position si nécessaire -->
+   </include>
+
+    <actor name="actor">
+      <skin>
+        <filename>walk.dae</filename>
+      </skin>
+      <animation name="animation">
+        <filename>walk.dae</filename>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0</time>
+            <pose>0 2 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>2</time>
+            <pose>0 -2 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>2.5</time>
+            <pose>0 -2 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>7</time>
+            <pose>0 2 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>7.5</time>
+            <pose>0 2 0 0 0 -1.57</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+  </world>
+</sdf>

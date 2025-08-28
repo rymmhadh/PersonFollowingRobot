@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="walk_world">
+
+    <!-- Plugins ROS2 -->
+    <plugin name="gazebo_ros" filename="libgazebo_ros_init.so"/>
+    <plugin name="gazebo_ros_factory" filename="libgazebo_ros_factory.so"/>
+
+    <!-- Soleil et sol -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- TurtleBot3 Burger avec caméra -->
+    <include>
+      <uri>model://turtlebot3_burger</uri>
+      <name>turtlebot3_burger</name>
+      <!-- Position initiale : en face de l’acteur -->
+      <pose>0 -2 0 0 0 0</pose>
+    </include>
+
+    <!-- Acteur (personnage animé) -->
+    <actor name="actor1">
+      <!-- Position initiale -->
+      <pose>0 0 0 0 0 0</pose>
+      <skin>
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+
+      <!-- Plugin de contrôle de trajectoire -->
+      <plugin name="actor1_plugin" filename="libActorPlugin.so">
+        <!-- Étape 1 : Acteur marche vers le robot (en face) -->
+        <target>0 -2 0</target>
+        <!-- Étape 2 : Acteur tourne de dos (rotation de π autour de Z) -->
+        <target>0 -2 0 0 0 3.1416</target>
+        <!-- Étape 3 : Acteur suit une trajectoire -->
+        <target>2 -2 0</target>
+        <target>2  2 0</target>
+        <target>-2 2 0</target>
+        <target>-2 -2 0</target>
+        <target>0 0 0</target>
+
+        <!-- Paramètres de mouvement -->
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+      </plugin>
+    </actor>
+
+  </world>
+</sdf>

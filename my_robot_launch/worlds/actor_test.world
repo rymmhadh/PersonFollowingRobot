@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="actor_test">
+
+    <!-- Sol + lumière -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- ACTEUR animé -->
+    <actor name="walker">
+      <skin>
+        <filename>model://walking_person/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <pose>0 0 1.0 0 0 0</pose>
+      <animation name="walking">
+        <filename>model://walking_person/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0</time>
+            <pose>0 0 1.0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>5</time>
+            <pose>4 0 1.0 0 0 0</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+  </world>
+</sdf>
