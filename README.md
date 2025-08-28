@@ -74,6 +74,8 @@ To ensure compatibility with our CUDA and PyTorch environment, the file needs to
 access:
 .venv-py39/Lib/site-packages/ultralytics/trackers/reid_multibackend.py
 
+COPY/Paste
+
 
 from collections import OrderedDict, namedtuple
 from os.path import exists as file_exists
@@ -373,6 +375,8 @@ class ReIDDetectMultiBackend(nn.Module):
 Access virtual environment:
 .venv-py39/Lib/site-packages/torchreid/models/reid_model_factory.py
 
+COPY/PASTE
+
 from collections import OrderedDict
 from pathlib import Path
 
@@ -559,7 +563,7 @@ def load_pretrained_weights(model, weight_path):
 
 
 
-How to Install MongoDB on Windows
+**********How to Install MongoDB on Windows****************
 
     Download the installer:
     Go to the official MongoDB Community Server download page:
@@ -664,6 +668,14 @@ show collections
 db.profiles.find().pretty()
 
 //////////////////////////////////////////////////////////////////////////////
+Run project : python Robot.py
+
+
+
+ ****************************** Partie ROS2****************************
+
+
+
 
 Installing ROS 2 Humble + Gazebo Harmonic
 1️⃣ Install ROS 2 Humble on Ubuntu 22.04
@@ -863,6 +875,7 @@ gzclient
 #   P e r s o n F o l l o w i n g R o b o t 
  
  
+
 
 
 
