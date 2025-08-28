@@ -646,9 +646,9 @@ Let me know if you want the commands adapted to your Ubuntu version or help conf
 
 
 
-to open the MongoDB shell.
+****to open the MongoDB shell.
 
-Connect to MongoDB shell
+*****Connect to MongoDB shell
 
 mongosh
 
@@ -675,58 +675,110 @@ https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
 
 https://gazebosim.org/docs/harmonic/install_ubuntu/
 
-📂 Creating a ROS 2 Workspace for PersonFollowingRobot
 
-1️⃣ Create the Workspace Directory
+3️⃣ Install Dependent ROS 2 Packages
 
-# Navigate to your home directory or desired location
-cd ~/turtlebot34_ws
+Open a terminal (Ctrl+Alt+T) and install the necessary packages:
 
-# Create a new workspace folder
-mkdir -p src
-cd src
+Gazebo:
 
+sudo apt install ros-humble-gazebo-*
 
+Cartographer:
 
-2️⃣ Clone or Copy Your Packages
+sudo apt install ros-humble-cartographer
+sudo apt install ros-humble-cartographer-ros
 
+Navigation2:
 
-# Copy person_following_pkg
-cp -r ~/path_to/PersonFollowingRobot/person_following_pkg ./
+sudo apt install ros-humble-navigation2
+sudo apt install ros-humble-nav2-bringup
 
-# Copy my_robot_launch
-cp -r ~/path_to/PersonFollowingRobot/my_robot_launch ./
+4️⃣ Install TurtleBot3 Packages
 
-
-3️⃣ Build the Workspace
-
-cd ~/turtlebot34_ws
-colcon build
+Set up the workspace for TurtleBot3 packages:
 
 
-4️⃣ Source the Workspace
+source /opt/ros/humble/setup.bash
+mkdir -p ~/turtlebot3_ws/src
+cd ~/turtlebot3_ws/src
 
-source ~/turtlebot34_ws/install/setup.bash
+# Clone required repositories
+git clone -b humble https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git
 
-echo "source ~/turtlebot34_ws/install/setup.bash" >> ~/.bashrc
+# Install build tools
+sudo apt install python3-colcon-common-extensions
+
+# Build the workspace
+cd ~/turtlebot3_ws
+colcon build --symlink-install
+
+# Source workspace setup automatically
+echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc
+source ~/.bashrc
+
+5️⃣ Configure the Environment
+
+Set up the ROS 2 and Gazebo environment variables for your Remote PC:
+
+echo 'export ROS_DOMAIN_ID=30 # TURTLEBOT3' >> ~/.bashrc
+echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
+echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
 source ~/.bashrc
 
 
-🖥️ Setting Up the Remote PC for PersonFollowingRobot
-1️⃣ Download and Install Ubuntu
 
-Download the Ubuntu 22.04 LTS Desktop (64-bit) image for your PC.
-Ubuntu 22.04 LTS Desktop
+2. Clone the PersonFollowingRobot Repository
 
+   
+cd ~/turtlebot3_ws/src
+git clone https://github.com/rymmhadh/PersonFollowingRobot.git
 
-
-
-
+3. Copy Required Packages
 
 
+  Move the required packages into the src folder of your workspace:
+
+   
+cd ~/turtlebot3_ws/src/PersonFollowingRobot
+
+# Copy the packages into workspace src
+cp -r person_following_pkg ~/turtlebot3_ws/src/
+cp -r my_robot_launch ~/turtlebot3_ws/src/
 
 
+4. Build the Workspace
 
+   
+cd ~/turtlebot3_ws/
+colcon build --symlink-install
+source install/setup.bash
+
+5. Verify Installation
+   
+ros2 pkg list | grep person_following_pkg
+ros2 pkg list | grep my_robot_launch
+
+
+4. Copy the Python Virtual Environment
+
+To ensure that all Python dependencies are available, copy the .venv-py39 virtual environment into the person_following_pkg directory:
+
+cd ~/turtlebot3_ws/src/PersonFollowingRobot
+cp -r .venv-py39 ~/turtlebot3_ws/src/person_following_pkg/
+
+Activate the environment when needed:
+
+cd ~/turtlebot3_ws/src/person_following_pkg/.venv-py39
+source bin/activate
+
+5. Build the Workspace
+
+cd ~/turtlebot3_ws/
+colcon build --symlink-install
+source install/setup.bash
 
 
 
@@ -800,6 +852,7 @@ Ubuntu 22.04 LTS Desktop
 #   P e r s o n F o l l o w i n g R o b o t 
  
  
+
 
 
 
